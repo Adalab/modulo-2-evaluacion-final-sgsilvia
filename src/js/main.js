@@ -16,8 +16,16 @@ function getDataApi (inputSearchValue){ fetch (`https://api.jikan.moe/v4/anime?q
 
 .then(response => response.json())
  .then( serverResp => {animeData= serverResp.data;
+    for (const eachSerie of animeData) {if  (eachSerie.images.jpg.image_url ===  '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'){ eachSerie.images.jpg.image_url= 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+ }
+        
+    } 
 
+
+  /*   const filterPlaceholderImage = animeData.filter((eachserie.images.jpg.large_image_url) =>  "https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png" );
+console.log(filterPlaceholderImage); */
     renderAnime();
+
   } );}
 
 
@@ -28,11 +36,11 @@ function getDataApi (inputSearchValue){ fetch (`https://api.jikan.moe/v4/anime?q
 function renderAnime() {   let html= '';
 
 
-  for (const eachserie of animeData) {
+  for (const eachSerie of animeData) {
     html += `<li>
     <div>`;
-    html +=` <h2 class="titleH2">${eachserie.title} </h2>`;
-    html += `<img class="animeImage" src="${eachserie.images.jpg.large_image_url} "
+    html +=` <h2 class="titleH2">${eachSerie.title} </h2>`;
+    html += `<img class="animeImage" src="${eachSerie.images.jpg.image_url} "
         alt="imagen">`;
     html +=  ` </div> </li>`;
 
