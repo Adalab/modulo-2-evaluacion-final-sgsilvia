@@ -1,0 +1,25 @@
+/*;
+
+@import 'components/code';
+@import 'components/links';
+@import 'layout/page';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'pages/index';
+*/
+
+@import 'core/variables';
+@import 'core/reset';
+
+body {
+  background-color: aqua;
+}
+
+.animeImage {
+  width: 300px;
+}
+
+.titleH2 {
+  font-size: 18px;
+  padding: 10px;
+}
