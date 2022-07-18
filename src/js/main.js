@@ -19,8 +19,6 @@ function getDataApi(inputSearchValue) {
     .then((response) => response.json())
     .then((serverResp) => {
       animeData = serverResp.data;
-       localStorage.setItem('data', JSON.stringify(favourites));
-       renderAnimeFav( favourites);
 
       for (const eachSerie of animeData) {
         if (
@@ -37,14 +35,17 @@ function getDataApi(inputSearchValue) {
 }
 //localstorage//
 
-function onLoad(){
-  const dataLocalStorage =JSON.parse(localStorage.getItem('data'));
-   if (dataLocalStorage){console.log('hay cosas'); } else {getDataApi();};
- 
-  console.log(dataLocalStorage);
- }
- onLoad();
+function onLoad() {
+  const dataLocalStorage = JSON.parse(localStorage.getItem('data'));
+  if (dataLocalStorage) {
+    favourites = dataLocalStorage;
+    renderAnimeFav(favourites);
+    console.log('hay cosas');
+  }
 
+  console.log(dataLocalStorage);
+}
+onLoad();
 
 //manejadora click//
 
@@ -68,6 +69,8 @@ function handleclickFav(ev) {
 
   renderAnimeFav();
   renderAnime();
+  localStorage.setItem('data', JSON.stringify(favourites));
+
   console.log(favourites);
 }
 
@@ -94,38 +97,37 @@ function renderAnime() {
       classFav = '';
     }
 
-    html += `<li class=" li-serie js-list-serie" ${classFav} id= ${eachSerie.mal_id}>
-    <div  class= "div-serie" `;
-    html += ` <h3 class="title-h3">${eachSerie.title} </h3>`;
-    html += `<img class="anime-image" src="${eachSerie.images.jpg.image_url} "
+    html += ` <li class="li-serie js-list-serie" ${classFav} id= ${eachSerie.mal_id}>
+      `;
+    html += `<h3 class="li-serie__title">${eachSerie.title} </h3>`;
+    html += `<img class="li-serie__image" src="${eachSerie.images.jpg.image_url} "
         alt="imagen">`;
-    html += ` </div> </li>`;
+    html += `  </li>`;
   }
   listAnime.innerHTML = html;
 
   listenerSerie();
-;
+  console.log(renderAnime);
 }
 
 function renderAnimeFav() {
   let html = '';
 
   for (const eachSerie of favourites) {
-    html += `<li class=" li-serie js-list-serie" id= ${eachSerie.mal_id}>
-    <div  class= "div-serie" `;
-    html += ` <h3 class="title-h3">${eachSerie.title} </h3>`;
-    html += `<img class="anime-image" src="${eachSerie.images.jpg.image_url} "
+    html += `<li class="li-serie js-list-serie" id= ${eachSerie.mal_id}>`;
+    html += ` <h3 class="li-serie__title">${eachSerie.title} </h3>`;
+    html += `<img class="li-serie__image" src="${eachSerie.images.jpg.image_url} "
         alt="imagen">`;
-    html += ` </div> </li>`;
+    html+= `<i class="fa-solid fa-circle-xmark li-serie__icon "></i>`;
+    html += ` </li>`;
   }
   listAnimeFav.innerHTML = html;
 
   listenerSerie();
+ 
 }
 
 //selectet fav style//
-
-
 
 //manejadoras eventos//
 function handleclick(ev) {
@@ -133,7 +135,6 @@ function handleclick(ev) {
   const inputSearchValue = inputSearch.value;
 
   getDataApi(inputSearchValue);
- 
 }
 
 //eventos//

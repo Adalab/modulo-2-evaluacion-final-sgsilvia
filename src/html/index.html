@@ -5,33 +5,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ejericio</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+
+  <script src="https://kit.fontawesome.com/8c88b3fdc7.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="./assets/css/main.css" />
-  <link rel="icon" href="./assets/images/favicon.png" />
-  <link rel="stylesheet" href=".assets/css/main.css" />
 </head>
 
 <body>
-  <main class="main">
-    <h1 class="main__title-h1">Buscador de series de anime</h1>
+  <header class="header">
+    <h1 class="header__title-h1">Buscador de series de anime</h1>
     <form action="">
-      <input class="input-search js-input-search" type="text" />
-      <button class="btn-search js-btn-search">Buscar</button>
+      <input class=" header__input-search js-input-search" type="text" />
+      <button class="header__btn-search js-btn-search">Buscar</button>
+
+      <button class="header__btn-reset js-btn-reset"> Reset</button>
+
     </form>
+  </header>
 
-    <div class="div-articles">
-      <article class="a1">
-        <ul class="js-list-fav">
 
-        </ul>
-      </article>
-      <article class="a2">
-        <ul class="list-serie js-list-anime"> </ul>
-      </article>
-    </div>
+  <main class="main">
+
+    <article class="main__article-fav">
+      <h2 class="main__article-fav--h2">Series favoritas</h2>
+      <ul class="main__article-fav--ul js-list-fav"></ul>
+    </article>
+
+
+    <article class="main__article-results">
+      <h2 class="main__article-results--h2">Resultados</h2>
+      <ul class="  main__article-results--ul js-list-anime"></ul>
+    </article>
+
   </main>
 
+  <footer class="footer"> </footer>
+
   <script src="./assets/js/main.js"></script>
+
 </body>
 
 </html>
