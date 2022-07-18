@@ -2,66 +2,139 @@
 
 console.log('>> Ready :)');
 
-const  listAnime = document.querySelector ('.js-list-anime');
+const listAnime = document.querySelector('.js-list-anime');
 
-const btnSearch = document.querySelector ('.js-btn-search');
-const inputSearch =document.querySelector('.js-input-search');
+const btnSearch = document.querySelector('.js-btn-search');
+const inputSearch = document.querySelector('.js-input-search');
+const listAnimeFav = document.querySelector('.js-list-fav');
 
+//arrays//
 let animeData = [];
-
+let favourites = [];
 
 //datos servidor//
 
-function getDataApi (inputSearchValue){ fetch (`https://api.jikan.moe/v4/anime?q=${inputSearchValue}`)
+function getDataApi(inputSearchValue) {
+  fetch(`https://api.jikan.moe/v4/anime?q=${inputSearchValue}`)
+    .then((response) => response.json())
+    .then((serverResp) => {
+      animeData = serverResp.data;
+       localStorage.setItem('data', JSON.stringify(favourites));
+       renderAnimeFav( favourites);
 
-.then(response => response.json())
- .then( serverResp => {animeData= serverResp.data;
-    for (const eachSerie of animeData) {if  (eachSerie.images.jpg.image_url ===  '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'){ eachSerie.images.jpg.image_url= 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+      for (const eachSerie of animeData) {
+        if (
+          eachSerie.images.jpg.image_url ===
+          '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'
+        ) {
+          eachSerie.images.jpg.image_url =
+            'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+        }
+      }
+
+      renderAnime();
+    });
+}
+//localstorage//
+
+function onLoad(){
+  const dataLocalStorage =JSON.parse(localStorage.getItem('data'));
+   if (dataLocalStorage){console.log('hay cosas'); } else {getDataApi();};
+ 
+  console.log(dataLocalStorage);
  }
-        
-    } 
+ onLoad();
 
 
-  /*   const filterPlaceholderImage = animeData.filter((eachserie.images.jpg.large_image_url) =>  "https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png" );
-console.log(filterPlaceholderImage); */
-    renderAnime();
+//manejadora click//
 
-  } );}
+function handleclickFav(ev) {
+  ev.preventDefault;
+  const idFavSerie = parseInt(ev.currentTarget.id);
+  console.log(idFavSerie);
 
+  const serieFav = animeData.find(
+    (eachSerie) => eachSerie.mal_id === idFavSerie
+  );
 
+  const favouriteFound = favourites.findIndex(
+    (fav) => fav.mal_id === idFavSerie
+  );
+  if (favouriteFound === -1) {
+    favourites.push(serieFav);
+  } else {
+    favourites.splice(favouriteFound, 1);
+  }
 
+  renderAnimeFav();
+  renderAnime();
+  console.log(favourites);
+}
+
+function listenerSerie() {
+  const listSerie = document.querySelectorAll('.js-list-serie');
+  for (const eachSerie of listSerie) {
+    eachSerie.addEventListener('click', handleclickFav);
+  }
+}
 
 //function write//
-
-function renderAnime() {   let html= '';
-
+function renderAnime() {
+  let html = '';
+  let classFav = '';
 
   for (const eachSerie of animeData) {
-    html += `<li>
-    <div>`;
-    html +=` <h2 class="titleH2">${eachSerie.title} </h2>`;
-    html += `<img class="animeImage" src="${eachSerie.images.jpg.image_url} "
+    const favAnimeData = favourites.findIndex(
+      (eachFav) => eachSerie.mal_id === eachFav.mal_id
+    );
+    console.log(favAnimeData);
+    if (favAnimeData !== -1) {
+      classFav = 'serie-fav';
+    } else {
+      classFav = '';
+    }
+
+    html += `<li class=" li-serie js-list-serie" ${classFav} id= ${eachSerie.mal_id}>
+    <div  class= "div-serie" `;
+    html += ` <h3 class="title-h3">${eachSerie.title} </h3>`;
+    html += `<img class="anime-image" src="${eachSerie.images.jpg.image_url} "
         alt="imagen">`;
-    html +=  ` </div> </li>`;
-
-
+    html += ` </div> </li>`;
   }
   listAnime.innerHTML = html;
-  console.log(animeData);
 
+  listenerSerie();
+;
 }
+
+function renderAnimeFav() {
+  let html = '';
+
+  for (const eachSerie of favourites) {
+    html += `<li class=" li-serie js-list-serie" id= ${eachSerie.mal_id}>
+    <div  class= "div-serie" `;
+    html += ` <h3 class="title-h3">${eachSerie.title} </h3>`;
+    html += `<img class="anime-image" src="${eachSerie.images.jpg.image_url} "
+        alt="imagen">`;
+    html += ` </div> </li>`;
+  }
+  listAnimeFav.innerHTML = html;
+
+  listenerSerie();
+}
+
+//selectet fav style//
+
 
 
 //manejadoras eventos//
-function handleclick (ev){ev.preventDefault();
-  const inputSearchValue =  inputSearch.value;
+function handleclick(ev) {
+  ev.preventDefault();
+  const inputSearchValue = inputSearch.value;
 
-  getDataApi (inputSearchValue);
-  console.log(getDataApi );
-
+  getDataApi(inputSearchValue);
+ 
 }
 
-
 //eventos//
-btnSearch.addEventListener ('click', handleclick);
-
+btnSearch.addEventListener('click', handleclick);

@@ -8,30 +8,28 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="icon" href="./assets/images/favicon.png" />
-  <link rel="stylesheet" href=".assets/css/main.css">
+  <link rel="stylesheet" href=".assets/css/main.css" />
 </head>
 
 <body>
-  <main>
-    <h1>Buscador de series de anime</h1>
+  <main class="main">
+    <h1 class="main__title-h1">Buscador de series de anime</h1>
     <form action="">
-      <input class="js-input-search" type="text">
-      <button class="js-btn-search"> Buscar </button>
-
+      <input class="input-search js-input-search" type="text" />
+      <button class="btn-search js-btn-search">Buscar</button>
     </form>
 
-    <article>
-      <ul class="js-list-anime">
+    <div class="div-articles">
+      <article class="a1">
+        <ul class="js-list-fav">
 
-
-
-      </ul>
-
-    </article>
-
+        </ul>
+      </article>
+      <article class="a2">
+        <ul class="list-serie js-list-anime"> </ul>
+      </article>
+    </div>
   </main>
-
-
 
   <script src="./assets/js/main.js"></script>
 </body>
