@@ -18,8 +18,18 @@ function handleClickHeaderReset(ev) {
   ev.preventDefault();
   console.log(btnHeaderReset);
   clearInput();
+  clearList ();
+  renderAnime();
 }
+
+
+
 function clearInput() {
   const inputClear = '';
+
   inputSearch.value = inputClear;
+  
 }
+function clearList (){
+  animeData = [];
+ }
