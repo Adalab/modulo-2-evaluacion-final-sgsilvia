@@ -1,0 +1,61 @@
+.main {
+  padding: 50px 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  height: 80%;
+  font-family: $font-family-principal;
+  color: $font-color;
+
+  &__article-fav {
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--h2 {
+      font-size: 30px;
+      padding: 15px;
+      text-align: center;
+      background-color: $viv-pink;
+      margin-bottom: 40px;
+
+      border-radius: 40px;
+    }
+
+    &--btn {
+      margin-top: 20px;
+      font-size: 30px;
+      border: solid 10px $soft-pink;
+      border-radius: 20px;
+      font-family: $font-family-principal;
+    }
+  }
+
+  &__article-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 15px;
+
+    &--h2 {
+      width: 30%;
+      font-size: 30px;
+      padding: 15px;
+      text-align: center;
+      background-color: $viv-pink;
+      border-radius: 30px;
+      margin-bottom: 40px;
+    }
+
+    &--ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
