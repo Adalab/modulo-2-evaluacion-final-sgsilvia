@@ -13,7 +13,7 @@ function clearFav() {
 
 
 
-//btn reset input search//
+//btn reset input search and list//
 function handleClickHeaderReset(ev) {
   ev.preventDefault();
   console.log(btnHeaderReset);
