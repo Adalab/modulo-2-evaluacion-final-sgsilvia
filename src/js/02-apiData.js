@@ -19,7 +19,7 @@ function bucleAnimedata() {
   for (const eachSerie of animeData) {
     if (
       eachSerie.images.jpg.image_url ===
-      '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'
+      'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'
     ) {
       eachSerie.images.jpg.image_url =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
