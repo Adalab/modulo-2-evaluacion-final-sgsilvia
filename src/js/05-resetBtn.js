@@ -7,5 +7,5 @@ function handleClickReset() {
 }
 
 function clearFav() {
-  favourites = [] ;
+  favourites = [];
 }

@@ -44,9 +44,6 @@ function renderAnimeFav() {
   listAnimeFav.innerHTML = html;
 
   listenerSerie();
-  
- 
-  
 }
 
 //selectet fav style//

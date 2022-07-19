@@ -1,14 +1,10 @@
 'use strict';
 
-
-
-
 //manejadora click//
 
 function handleclickFav(ev) {
   ev.preventDefault;
   const idFavSerie = parseInt(ev.currentTarget.id);
-  console.log(idFavSerie);
 
   const serieFav = animeData.find(
     (eachSerie) => eachSerie.mal_id === idFavSerie
@@ -26,8 +22,6 @@ function handleclickFav(ev) {
   renderAnimeFav();
   renderAnime();
   localStorage.setItem('data', JSON.stringify(favourites));
-
-  console.log(favourites);
 }
 
 function listenerSerie() {
@@ -37,7 +31,6 @@ function listenerSerie() {
   }
 }
 
-
 //eventos//
 btnSearch.addEventListener('click', handleclick);
-btnFavReset.addEventListener('click',handleClickReset);
+btnFavReset.addEventListener('click', handleClickReset);

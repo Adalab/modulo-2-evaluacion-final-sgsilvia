@@ -11,18 +11,20 @@ function getDataApi(inputSearchValue) {
     .then((serverResp) => {
       animeData = serverResp.data;
 
-      for (const eachSerie of animeData) {
-        if (
-          eachSerie.images.jpg.image_url ===
-          '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'
-        ) {
-          eachSerie.images.jpg.image_url =
-            'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-        }
-      }
-
+      bucleAnimedata();
       renderAnime();
     });
+}
+function bucleAnimedata() {
+  for (const eachSerie of animeData) {
+    if (
+      eachSerie.images.jpg.image_url ===
+      '"https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png'
+    ) {
+      eachSerie.images.jpg.image_url =
+        'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    }
+  }
 }
 //localstorage//
 
@@ -33,7 +35,5 @@ function onLoad() {
     renderAnimeFav(favourites);
     console.log('hay cosas');
   }
-
-  console.log(dataLocalStorage);
 }
 onLoad();
