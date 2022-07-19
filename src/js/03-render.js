@@ -1,5 +1,8 @@
 'use strict';
-//function write//
+
+
+
+//function write all serie (array animeData) //
 function renderAnime() {
   let html = '';
   let classTitle = '';
@@ -26,9 +29,12 @@ function renderAnime() {
     html += `  </li>`;
   }
   listAnime.innerHTML = html;
-
   listenerSerie();
 }
+
+
+
+//function write only Favourite (array favourites)
 
 function renderAnimeFav() {
   let html = '';
@@ -42,16 +48,7 @@ function renderAnimeFav() {
     html += ` </li>`;
   }
   listAnimeFav.innerHTML = html;
-
   listenerSerie();
 }
 
-//selectet fav style//
 
-//manejadoras eventos//
-function handleclick(ev) {
-  ev.preventDefault();
-  const inputSearchValue = inputSearch.value;
-
-  getDataApi(inputSearchValue);
-}
