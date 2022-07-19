@@ -1,14 +1,11 @@
 'use strict';
 
-
-
-function handleClickReset (){
-
+function handleClickReset() {
   localStorage.clear();
+  clearFav();
+  renderAnimeFav();
+}
 
-  console.log(handleClickReset);
-
-
-  }
-
-
+function clearFav() {
+  favourites = [];
+}
