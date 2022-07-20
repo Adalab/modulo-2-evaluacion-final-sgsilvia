@@ -24,6 +24,7 @@ function renderAnime() {
     html += ` <li class="li-serie js-list-serie  ${classLi} "  id= ${eachSerie.mal_id}>
         `;
     html += `<h3 class="li-serie__title ${classTitle}">${eachSerie.title} </h3>`;
+    html +=`<p> ${ eachSerie.broadcast.time} </p> `;
     html += `<img class="li-serie__image" src="${eachSerie.images.jpg.image_url} "
           alt="imagen">`;
     html += `  </li>`;
@@ -44,6 +45,7 @@ function renderAnimeFav() {
     html += ` <h3 class="li-serie__title">${eachSerie.title} </h3>`;
     html += `<img class="li-serie__image" src="${eachSerie.images.jpg.image_url} "
           alt="imagen">`;
+  
     html += `<i class="fa-solid fa-circle-xmark li-serie__icon "></i>`;
     html += ` </li>`;
   }

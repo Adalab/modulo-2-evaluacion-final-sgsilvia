@@ -8,3 +8,4 @@ const inputSearch = document.querySelector('.js-input-search');
 const listAnimeFav = document.querySelector('.js-list-fav');
 const btnFavReset = document.querySelector('.js-btn-fav-reset');
 const btnHeaderReset = document.querySelector('.js-btn-reset');
+const btnLog = document.querySelector(".js-btn-log");
